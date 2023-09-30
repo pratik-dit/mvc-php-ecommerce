@@ -15,3 +15,7 @@
 Email: `admin@gmail.com`
 password: `12345678`
 
+#### Note:-
+For Product - Category relationship:
+  -- It can be a multiple as one product belongs in multiple category. (we can manage using new table (pivot one))
+  -- But I just consider one product belongs in one category.

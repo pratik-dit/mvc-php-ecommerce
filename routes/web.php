@@ -2,6 +2,7 @@
 use app\controllers\LoginController;
 use app\controllers\HomeController;
 use app\controllers\CategoryController;
+use app\controllers\ProductController;
 use thecodeholic\phpmvc\Application;
 
 $config = [
@@ -33,5 +34,13 @@ $app->router->get('/category/create', [CategoryController::class, 'create']);
 $app->router->get('/category/{slug}', [CategoryController::class, 'edit']);
 $app->router->post('/category/{id}', [CategoryController::class, 'update']);
 $app->router->get('/category/delete/{id}', [CategoryController::class, 'delete']);
+
+/* *********** Product Routes ************ */
+$app->router->get('/product', [ProductController::class, 'index']);
+$app->router->post('/product', [ProductController::class, 'store']);
+$app->router->get('/product/create', [ProductController::class, 'create']);
+$app->router->get('/product/{slug}', [ProductController::class, 'edit']);
+$app->router->post('/product/{id}', [ProductController::class, 'update']);
+$app->router->get('/product/delete/{id}', [ProductController::class, 'delete']);
 
 $app->run();
