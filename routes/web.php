@@ -1,6 +1,7 @@
 <?php
 use app\controllers\LoginController;
 use app\controllers\HomeController;
+use app\controllers\CategoryController;
 use thecodeholic\phpmvc\Application;
 
 $config = [
@@ -24,5 +25,13 @@ $app->router->get('/dashboard', [HomeController::class, 'dashboard']);
 $app->router->get('/login', [LoginController::class, 'login']);
 $app->router->post('/login', [LoginController::class, 'login']);
 $app->router->get('/logout', [LoginController::class, 'logout']);
+
+/* *********** Category Routes ************ */
+$app->router->get('/category', [CategoryController::class, 'index']);
+$app->router->post('/category', [CategoryController::class, 'store']);
+$app->router->get('/category/create', [CategoryController::class, 'create']);
+$app->router->get('/category/{slug}', [CategoryController::class, 'edit']);
+$app->router->post('/category/{id}', [CategoryController::class, 'update']);
+$app->router->get('/category/delete/{id}', [CategoryController::class, 'delete']);
 
 $app->run();

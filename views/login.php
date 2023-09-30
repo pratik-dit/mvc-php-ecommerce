@@ -13,6 +13,7 @@ use thecodeholic\phpmvc\form\Form;
   <h1 class="text-center"> Login </h1>
   <div class="row" id="login">  
     <div class="col-md-5 mx-auto">
+    <img class="card-img-top" src="/images/logo.png" alt="Card image" style="background-color: black;">
       <div class="card card-body">
         <form id="loginForm" action="/login" method="post">
           <input type="hidden" name="_csrf" value="7635eb83-1f95-4b32-8788-abec2724a9a4">  
