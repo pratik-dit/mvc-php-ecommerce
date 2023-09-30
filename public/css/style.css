@@ -1,0 +1,30 @@
+.error {
+	color: red;
+}
+/* ***************** Login Page ************** */
+#login h1 {
+	color: #fff;
+	padding-bottom: 2rem;
+	font-weight: bold;
+}
+
+#login a {
+	color: #333;
+}
+
+#login a:hover {
+	color: #E8D426;
+	text-decoration: none;
+}
+
+#login .form-control:focus {
+	color: #000;
+	background-color: #fff;
+	border: 2px solid #E8D426;
+	outline: 0;
+	box-shadow: none;
+}
+
+#login .btn {
+	background: #866ec7;
+}
