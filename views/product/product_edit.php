@@ -30,6 +30,14 @@ use thecodeholic\phpmvc\form\Form;
           <lSabel for="title"> Title </lSabel>
           <input type="text" class="form-control" id="title" name="title" value="<?php echo $product->title;?>">  
         </div>
+        <div class="form-group required">
+          <lSabel for="price"> Price </lSabel>
+          <input type="text" class="form-control" id="price" name="price" value="<?php echo $product->price;?>">  
+        </div>
+        <div class="form-group required">
+          <lSabel for="title"> Inventory </lSabel>
+          <input type="text" class="form-control" id="inventory" name="inventory" value="<?php echo $product->inventory;?>">  
+        </div>
         <div class="form-group">
           <label for="form_need">Active</label>
           <select id="form_need" name="active" class="form-control">
@@ -60,6 +68,16 @@ $(document).ready(function() {
       category_id: {
         required: true,
       },
+
+      price: {
+        required: true,
+        number: true
+      },
+
+      inventory: {
+        required: true,
+        number: true
+      },
     },
     messages: {
       title: {
@@ -70,6 +88,12 @@ $(document).ready(function() {
       },
       category_id: {
         required: "Please select product category",
+      },
+      price: {
+        required: "Please enter valid price",
+      },
+      inventory: {
+        required: "Please enter valid inventory",
       },
     },
   })

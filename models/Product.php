@@ -19,7 +19,7 @@ class Product extends DbModel
 
     public function attributes(): array
     {
-        return ['title', 'slug', 'active', 'category_id'];
+        return ['title', 'slug', 'active', 'category_id', 'price', 'inventory'];
     }
 
     public static function getAll()
@@ -48,11 +48,13 @@ class Product extends DbModel
       $currentDate = date("Y-m-d h:m:s");
       $tableName = static::tableName();
       $db = Application::$app->db;
-      $statement = $db->prepare("INSERT INTO $tableName (title, slug, category_id, active) VALUES (?, ?, ?, ?)");
+      $statement = $db->prepare("INSERT INTO $tableName (title, slug, category_id, active, price, inventory) VALUES (?, ?, ?, ?, ?, ?)");
       $statement->bindValue(1, $params['title']);
       $statement->bindValue(2, $params['slug']);
       $statement->bindValue(3, $params['category_id']);
       $statement->bindValue(4, $params['active']);
+      $statement->bindValue(5, $params['price']);
+      $statement->bindValue(6, $params['inventory']);
       $statement->execute();
     }
 
@@ -61,12 +63,14 @@ class Product extends DbModel
       $currentDate = date("Y-m-d h:m:s");
       $tableName = static::tableName();
       $db = Application::$app->db;
-      $statement = $db->prepare("UPDATE $tableName SET title = ?, slug = ?, category_id = ?, active = ? WHERE id = ?");
+      $statement = $db->prepare("UPDATE $tableName SET title = ?, slug = ?, category_id = ?, active = ?, price = ?, inventory = ? WHERE id = ?");
       $statement->bindValue(1, $params['title']);
       $statement->bindValue(2, $params['slug']);
       $statement->bindValue(3, $params['category_id']);
       $statement->bindValue(4, $params['active']);
-      $statement->bindValue(5, $params['id']);
+      $statement->bindValue(5, $params['price']);
+      $statement->bindValue(6, $params['inventory']);
+      $statement->bindValue(7, $params['id']);
       $statement->execute();
     }
 }

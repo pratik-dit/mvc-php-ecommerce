@@ -20,6 +20,8 @@ use thecodeholic\phpmvc\form\Form;
             <th scope="col">Title</th>
             <th scope="col">Slug</th>
             <th scope="col">Category</th>
+            <th scope="col">Price</th>
+            <th scope="col">Inventory</th>
             <th scope="col">Status</th>
             <th scope="col">Action</th>
           </tr>
@@ -31,6 +33,8 @@ use thecodeholic\phpmvc\form\Form;
             <td><?php echo $product['title']?></td>
             <td><?php echo $product['slug']?></td>
             <td><?php echo $product['category_name']?></td>
+            <td><?php echo $product['price']?></td>
+            <td><?php echo $product['inventory']?></td>
             <td><span class="badge <?php echo $product['active'] == 1 ? 'badge-primary' : 'badge-danger'; ?>"><?php echo $product['active'] ? 'Active' : 'In-Active';?></span></td>
             <td>
               <a href="/product/<?php echo $product['slug']; ?>">

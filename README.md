@@ -19,3 +19,7 @@ password: `12345678`
 For Product - Category relationship:
   -- It can be a multiple as one product belongs in multiple category. (we can manage using new table (pivot one))
   -- But I just consider one product belongs in one category.
+
+For Price & Inventory:
+  -- I have added to product level currently.
+  -- Actually, it suppoed to product options level as product available with different option like: size etc...
