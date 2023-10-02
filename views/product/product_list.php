@@ -10,8 +10,25 @@ use thecodeholic\phpmvc\form\Form;
   endif; 
 ?>
 <h1 class="text-center"> Products </h1>
-<div class="row" id="login">  
-  <div class="col-md-10 mx-auto">
+<div class="row" id="login">
+  <div class="col-md-5">
+    <div class="form-group">
+      <label for="form_need">Filter by Product Category</label>
+      <select id="category" name="category_id" class="select form-control">
+          <option value="" selected>Please select product category</option>
+          <?php foreach ($categories as $category) { ?>
+          <option value="<?php echo $category['id']?>"><?php echo $category['title']?></option>
+          <?php } ?>
+      </select>
+    </div>
+  </div>
+  <div class="col-md-5 mx-auto pt-4">
+    <div class="form-group">
+      <label for="form_need">&nbsp;</label>
+      <button type="button" id="reset-btn" class="btn btn-primary mb-2">Reset Filter</button>
+    </div>
+  </div>  
+  <div class="col-md-12 mx-auto">
     <div class="card card-body">
       <table class="table">
         <thead class="black white-text">
@@ -51,3 +68,14 @@ use thecodeholic\phpmvc\form\Form;
     </div>
   </div>
 </div>
+<script>
+$(document).ready(function() {
+  $("#category").change(function(){
+    var category_id = $(this).val();
+    window.location.href = "/product?category_id="+category_id;
+  });
+  $("#reset-btn").click(function(){
+    window.location.href = "/product";
+  });
+});
+</script>

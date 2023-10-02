@@ -21,10 +21,13 @@ class ProductController extends Controller
       if (Application::isGuest()){
         $response->redirect('/');
       }
-      $products = Product::getAll();
+      $params = $request->getBody();
+      $categories = Category::getAll();
+      $products = Product::getAll($params);
 
       return $this->render('product/product_list', [
-          'products' => $products
+          'products' => $products,
+          'categories' => $categories
       ]);
     }
 

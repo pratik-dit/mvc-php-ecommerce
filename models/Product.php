@@ -22,12 +22,17 @@ class Product extends DbModel
         return ['title', 'slug', 'active', 'category_id', 'price', 'inventory'];
     }
 
-    public static function getAll()
+    public static function getAll($params)
     {
       $tableName = static::tableName();
       $db = Application::$app->db;
       //$statement = $db->prepare("SELECT * FROM $tableName where deleted_at IS NULL");
-      $statement = $db->prepare("SELECT products.*, categories.title as category_name FROM $tableName LEFT JOIN categories ON categories.id = products.category_id where products.deleted_at IS NULL");
+      if(count($params) > 0){
+        $statement = $db->prepare("SELECT products.*, categories.title as category_name FROM $tableName LEFT JOIN categories ON categories.id = products.category_id where products.deleted_at IS NULL AND category_id = ?");
+        $statement->bindValue(1, $params['category_id']);
+      } else {
+        $statement = $db->prepare("SELECT products.*, categories.title as category_name FROM $tableName LEFT JOIN categories ON categories.id = products.category_id where products.deleted_at IS NULL");
+      }
       $statement->execute();
       return $statement->fetchAll();
     }
